@@ -12,9 +12,7 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(private val repository: Repository): ViewModel(){
 
-    val profileLiveData: MutableLiveData<User> by lazy {
-        MutableLiveData<User>()
-    }
+    val profileLiveData = MutableLiveData<User>()
 
     fun getData() {
         CoroutineScope(Dispatchers.Main).launch {

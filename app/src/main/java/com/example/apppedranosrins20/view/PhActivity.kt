@@ -1,13 +1,15 @@
 package com.example.apppedranosrins20.view
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.ProgressBar
+import android.util.Log
 import android.widget.SeekBar
-import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.apppedranosrins20.databinding.ActivityPhdaurinaBinding
+import android.widget.SeekBar.OnSeekBarChangeListener as OnSeekBarChangeListener1
 
-class PhActivity : AppCompatActivity(){
+
+class PhActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPhdaurinaBinding
 
@@ -18,18 +20,28 @@ class PhActivity : AppCompatActivity(){
         setContentView(binding.root)
 
 
-        binding.seekBarPh.setOnSeekBarChangeListener(object : OnSeekBarChangeListener) {
+        binding.seekBarPh.setOnSeekBarChangeListener(object : OnSeekBarChangeListener1 {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                var textoEurico = (p1.toFloat() / 10).toString()
 
-        }
+                binding.textIndex.text = textoEurico
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+                return
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+                return
+            }
+
+        })
+
     }
-}
 
-private fun ProgressBar.setOnSeekBarChangeListener(
-    onSeekBarChangeListener: OnSeekBarChangeListener,
-    function: () -> Unit
-) {
-    /*fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean){
+    companion object {
+        private var TAG = PhActivity::class.java.simpleName.toString()
+    }
 
-    }*/
 }
 
