@@ -22,7 +22,7 @@ class PhActivity : AppCompatActivity() {
 
         binding.seekBarPh.setOnSeekBarChangeListener(object : OnSeekBarChangeListener1 {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                var textoEurico = (p1.toFloat() / 10).toString()
+                var textoEurico = ((p1.toFloat() + 45) / 10).toString()
 
                 binding.textIndex.text = textoEurico
             }
