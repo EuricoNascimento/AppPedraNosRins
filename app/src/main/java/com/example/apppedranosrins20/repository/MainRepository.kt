@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-class Repository {
+class MainRepository {
 
     suspend fun getData(): User {
         return withContext(Dispatchers.Default){
