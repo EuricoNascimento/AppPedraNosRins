@@ -1,17 +1,19 @@
 package com.example.apppedranosrins20.view
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.apppedranosrins20.databinding.ActivityPhdaurinaBinding
+import com.example.apppedranosrins20.repository.PhRepository
+import com.example.apppedranosrins20.viewmodel.PhViewModel
 import android.widget.SeekBar.OnSeekBarChangeListener as OnSeekBarChangeListener1
 
 
 class PhActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPhdaurinaBinding
+    private lateinit var viewModel: PhViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,10 @@ class PhActivity : AppCompatActivity() {
         binding = ActivityPhdaurinaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(
+            this,
+            PhViewModel.PhViewModelFactory(PhRepository())
+        ).get(PhViewModel::class.java)
 
         binding.seekBarPh.setOnSeekBarChangeListener(object : OnSeekBarChangeListener1 {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {

@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.apppedranosrins20.R
 import com.example.apppedranosrins20.databinding.ActivityMainBinding
-import com.example.apppedranosrins20.repository.MainRepository
+import com.example.apppedranosrins20.repository.Repository
 
 class MainActivity : AppCompatActivity(){
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(){
 
         viewModel = ViewModelProvider(
             this,
-            MainViewModel.MainViewModelFactory(MainRepository())
+            MainViewModel.MainViewModelFactory(Repository())
         ).get(MainViewModel::class.java)
 
         viewModel.profileLiveData.observe(this, Observer{ profile ->
